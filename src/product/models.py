@@ -24,15 +24,15 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural='Categories'
 
-    # def image_tag(self):
-    #     return mark_safe('<img src="%s" width="50" height="50" />' % (self.image.url))
+    def image_tag(self):
+        return mark_safe('<img src="%s" width="50" height="50" />' % (self.image.url))
 
     ## method to create a fake table field in read only mode
-    def image_tag(self):
-        if self.image.url is not None:
-            return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
-        else:
-            return ""
+    # def image_tag(self):
+    #     if self.image.url is not None:
+    #         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+    #     else:
+    #         return ""
 
 
 class Product(models.Model):
