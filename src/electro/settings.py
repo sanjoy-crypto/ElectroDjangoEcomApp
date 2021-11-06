@@ -38,10 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
+    'mptt',
 
     # apps 
     'home.apps.HomeConfig',
     'product.apps.ProductConfig',
+    'order.apps.OrderConfig',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +72,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'home.template_context.get_filters',
+                'product.template_context.get_filters',
+                'order.template_context.get_filters',
             ],
         },
     },
@@ -138,3 +146,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+ 
+    },
+}
+CKEDITOR_UPLOAD_PATH = "uploads/"
