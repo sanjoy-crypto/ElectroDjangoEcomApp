@@ -1739,6 +1739,14 @@ textarea.input {
 .padng{
   margin:15px;
 }
+.alertShow{
+    position: absolute !important;
+    width: 100% !important;
+    top: 0px !important;
+    right: 0px !important;
+    z-index: 999;
+    text-align: center;
+}
 .hero img{
   height: 500px !important;
   opacity: 0.9;

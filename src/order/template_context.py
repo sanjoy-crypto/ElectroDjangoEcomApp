@@ -1,7 +1,6 @@
-from home.models import Setting
 from product.models import Category
+from home.models import Setting
 from order.models import ShopCart
-
 
 def get_filters(request):
     setting = Setting.objects.get(id=1)

@@ -16,3 +16,11 @@ class ContactMessageAdmin(admin.ModelAdmin):
 admin.site.register(ContactMessage,ContactMessageAdmin)
 
 admin.site.register(Slider)
+
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ['question', 'answer','ordernumber','status']
+    list_filter = ['status']
+    
+    
+
+admin.site.register(FAQ,FAQAdmin)

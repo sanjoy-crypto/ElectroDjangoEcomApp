@@ -89,11 +89,12 @@
                                             href="{% url 'product_details' product.id product.slug %}">{{product.title}}</a>
                                     </h3>
                                     <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
+                                        {{ product.avaregereview}}/{{ product.countreview}}
                                     </div>
                                     <h4 class="productPrice">Tk.{{product.price}} <del
                                             class="productOldPrice">Tk.{{product.old_price}}</del></h4>

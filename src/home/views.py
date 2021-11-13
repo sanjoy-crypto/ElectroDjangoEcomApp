@@ -78,7 +78,15 @@ def product_details(request,id,slug):
     images = Images.objects.filter(product_id=id)
     products = Product.objects.all().order_by('?')[:8]
     comments = Comment.objects.filter(product_id=id,status="True").order_by('-id')
+
+    # review = Comment.objects.filter(product_id=id,status="True").aggregate(Count('id').Avg('rate'))
     
     context = {'product':product,'images':images,'products':products,'comments':comments}
     return render(request,'productDetails.html',context)
 
+
+
+def Faq(request):
+    faq = FAQ.objects.filter(status="True").order_by("ordernumber")
+
+    return render(request,'faq.html',{'faq':faq})

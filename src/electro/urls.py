@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from product.views import *
 from order.views import *
+from user.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
@@ -33,6 +34,11 @@ urlpatterns = [
 
     path('category/<int:id>/<slug:slug>/',category_product,name='category_product'),
     path('shopcart/',shopCart,name='shopcart'),
+
+    path('login/',login_page,name='login'),
+    path('signup/',signup_page,name='signup'),
+    path('logout/',logout_page,name='logout'),
+   
 
    
 ]

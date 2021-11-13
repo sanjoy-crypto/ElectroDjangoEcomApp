@@ -1,12 +1,12 @@
 from django.db import models
-from django.db.models.fields import TextField
 from django.utils.html import mark_safe
-from ckeditor.fields import RichTextField
+
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from django.contrib.auth.models import User
 from mptt.models import MPTTModel, TreeForeignKey
 from django.forms import ModelForm
+from django.db.models import Avg, Count
 
 # Create your models here.
 class Category(MPTTModel):
@@ -88,6 +88,19 @@ class Product(models.Model):
         else:
             return ""
 
+    def avaregereview(self):
+        reviews = Comment.objects.filter(product=self, status='True').aggregate(avarage=Avg('rate'))
+        avg=0
+        if reviews["avarage"] is not None:
+            avg=float(reviews["avarage"])
+        return avg
+    
+    def countreview(self):
+        reviews = Comment.objects.filter(product=self, status='True').aggregate(count=Count('id'))
+        cnt=0
+        if reviews["count"] is not None:
+            cnt = int(reviews["count"])
+        return cnt
 
 class Images(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE)

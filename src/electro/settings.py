@@ -75,6 +75,7 @@ TEMPLATES = [
                 'home.template_context.get_filters',
                 'product.template_context.get_filters',
                 'order.template_context.get_filters',
+                'user.template_context.get_filters',
             ],
         },
     },
